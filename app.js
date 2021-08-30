@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const methodOverride = require('method-override');
+const flash = require('connect-flash');
+const session = require('express-session');
 // mongoose
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/bwamern');
@@ -17,7 +20,14 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.use(methodOverride('_method')); 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 60000 }
+}));
+app.use(flash());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

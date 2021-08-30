@@ -8,17 +8,17 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form method="POST" action="/admin/category">
+        <form method="POST" action="/admin/category?_method=PUT">
         <div class="modal-body">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control name" name="name" id="name" placeholder="Enter Name">
+                  <input type="text" class="form-control name" name="name" id="name" placeholder="Enter Name" required>
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="hidden" class="id">
+                <input type="hidden" class="id" name="id">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </div>
         </form>
         </div>
